@@ -6,7 +6,7 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 18:19:58 by schaaban          #+#    #+#             */
-/*   Updated: 2017/12/04 11:44:01 by schaaban         ###   ########.fr       */
+/*   Updated: 2017/12/04 18:45:21 by schaaban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,18 @@ t_tetri		**tetri_creator(int count)
 
 void		tetri_init(t_tetri *self, char *str)
 {
+	int		i;
+	char	*str_cpy;
+
+	i = -1;
+	if ((str_cpy = ft_strdup(str)) == NULL)
+		return ;
 	self->str = str;
 	self->bin_tab = ft_strtobin(str);
+	while (str_cpy[++i] != '\0')
+		str_cpy[i] = (str_cpy[i] == '#') ? '1' : '0';
+	self->bin_str = ft_atoi_base(str_cpy, 2);
+	free(str_cpy);
 }
 
 void		tetri_dtor(t_tetri *self)

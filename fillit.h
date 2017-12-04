@@ -6,7 +6,7 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 12:58:09 by schaaban          #+#    #+#             */
-/*   Updated: 2017/12/04 11:21:13 by schaaban         ###   ########.fr       */
+/*   Updated: 2017/12/04 18:40:14 by schaaban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ void		ft_freeall(t_tetri **list, char **tab);
 void		ft_putbintab(int **tab);
 
 int			**solve(t_tetri **tetri_list);
+
+int			ft_atoi_base(const char *str, int str_base);
 
 #endif

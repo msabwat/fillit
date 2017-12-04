@@ -6,7 +6,7 @@
 #    By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 12:02:10 by schaaban          #+#    #+#              #
-#    Updated: 2017/12/04 11:55:11 by schaaban         ###   ########.fr        #
+#    Updated: 2017/12/04 18:39:47 by schaaban         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ SRCS		=	get_one_line.c		\
 				checker.c			\
 				tetri.c				\
 				tools.c				\
-				solve.c
+				solve.c				\
+				ft_atoi_base.c
 
 OBJS		=	$(SRCS:.c=.o)
 

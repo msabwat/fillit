@@ -6,7 +6,7 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 12:09:18 by schaaban          #+#    #+#             */
-/*   Updated: 2017/12/04 09:02:11 by schaaban         ###   ########.fr       */
+/*   Updated: 2017/12/04 18:34:40 by schaaban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ typedef struct		s_tetri
 {
 	char			*str;
 	int				**bin_tab;
+	int				bin_str;
 }					t_tetri;
 
 t_tetri				**tetri_creator(int count);
