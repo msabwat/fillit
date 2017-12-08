@@ -6,7 +6,7 @@
 #    By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 12:02:10 by schaaban          #+#    #+#              #
-#    Updated: 2017/12/04 18:39:47 by schaaban         ###   ########.fr        #
+#    Updated: 2017/12/08 05:37:57 by schaaban         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,11 @@ SRCS		=	get_one_line.c		\
 				tetri.c				\
 				tools.c				\
 				solve.c				\
-				ft_atoi_base.c
+				ft_atoi_base.c		\
+				map.c				\
+				ft_sqrt.c			\
+				ft_free.c			\
+				ft_itoa_base.c
 
 OBJS		=	$(SRCS:.c=.o)
 
@@ -40,9 +44,11 @@ $(OBJS): $(SRCS)
 clean:
 	@echo "FILLIT - Cleaning objects"
 	@rm -Rf $(OBJS)
+	@$(MAKE) -C $(LIB_P) clean
 
 fclean: clean
 	@echo "FILLIT - Full clean (objects + exe)"
 	@rm -Rf $(NAME)
+	@$(MAKE) -C $(LIB_P) fclean
 
 re: fclean all

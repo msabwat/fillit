@@ -6,13 +6,13 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 15:42:21 by schaaban          #+#    #+#             */
-/*   Updated: 2017/12/04 11:48:58 by schaaban         ###   ########.fr       */
+/*   Updated: 2017/12/07 22:03:32 by schaaban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "tetri.h"
 #include "libft/libft.h"
+#include <stdlib.h>
 
 static int	ck_check_value(int **tab, int i, int j)
 {
@@ -33,7 +33,7 @@ static int	ck_check_value(int **tab, int i, int j)
 	return (links);
 }
 
-static int	ck_check_tetri(t_tetri *tt)
+static int	ck_check_tetri(int **tab)
 {
 	int		i;
 	int		j;
@@ -48,7 +48,7 @@ static int	ck_check_tetri(t_tetri *tt)
 	{
 		while (j < 4)
 		{
-			if ((links = ck_check_value(tt->bin_tab, i, j)) >= 2)
+			if ((links = ck_check_value(tab, i, j)) >= 2)
 				if ((double_links += (links - 1)) == 2)
 					return (1);
 			j++;
@@ -59,24 +59,42 @@ static int	ck_check_tetri(t_tetri *tt)
 	return (0);
 }
 
-t_tetri		**check_valid(char **tab)
+static int	free_bintab(int ***bin_tab)
 {
-	int			i;
-	t_tetri		**tetri_list;
+	int		i;
 
 	i = 0;
-	while (tab[i] != NULL)
-		i++;
-	tetri_list = tetri_creator(i);
-	i = -1;
-	while (tetri_list[++i] != NULL)
+	if ((*bin_tab) != NULL)
 	{
-		tetri_init(tetri_list[i], ft_strdup(tab[i]));
-		if (!(ck_check_tetri(tetri_list[i])))
-		{
-			ft_freeall(tetri_list, tab);
-			return (NULL);
-		}
+		while (i < 4)
+			free((*bin_tab)[i++]);
+		free((*bin_tab));
 	}
-	return (tetri_list);
+	return (0);
+}
+
+int			check_valid(char **tab, t_tetri ***tetri_list, t_map ***map_list)
+{
+	int			i;
+	int			tetri_cnt;
+	int			**bin_tab;
+
+	tetri_cnt = 0;
+	while (tab[tetri_cnt] != NULL)
+		tetri_cnt++;
+	*tetri_list = tetri_creator(tetri_cnt);
+	*map_list = map_creator(tetri_cnt);
+	i = -1;
+	while ((*map_list)[++i] != NULL)
+		map_init((*map_list)[i], ft_sqrt(tetri_cnt * 4));
+	i = -1;
+	while ((*tetri_list)[++i] != NULL)
+	{
+		tetri_init((*tetri_list)[i], ft_strdup(tab[i]));
+		bin_tab = ft_strtobin(tab[i]);
+		if (!(ck_check_tetri(bin_tab)))
+			return (free_bintab(&bin_tab));
+		free_bintab(&bin_tab);
+	}
+	return ((tetri_cnt > NUMTETRI) ? 0 : 1);
 }

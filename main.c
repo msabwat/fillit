@@ -6,19 +6,20 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 12:03:44 by schaaban          #+#    #+#             */
-/*   Updated: 2017/12/04 11:17:28 by schaaban         ###   ########.fr       */
+/*   Updated: 2017/12/08 05:32:32 by schaaban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "fillit.h"
-#include "tetri.h"
 #include <sys/types.h>
 #include <fcntl.h>
 #include <unistd.h>
 
-static int		error_handler(void)
+static int		error_handler(t_tetri **tetri_list,
+	t_map **map_list, char **tab)
 {
+	ft_freeall(&tetri_list, &map_list, &tab);
 	ft_putendl("error");
 	return (0);
 }
@@ -28,16 +29,18 @@ int				main(int argc, char **argv)
 	int			fd;
 	char		**tab;
 	t_tetri		**tetri_list;
+	t_map		**map_list;
 
 	if (argc != 2)
-		return (error_handler());
-	fd = open(argv[1], 'r');
-	if (!(tab = check_file_content(fd)))
-		return (error_handler());
-	if (!(tetri_list = check_valid(tab)))
-		return (error_handler());
-	ft_putbintab(solve(tetri_list));
-	ft_freeall(tetri_list, tab);
+		return (error_handler(NULL, NULL, NULL));
+	if ((fd = open(argv[1], 'r')) < 0)
+		return (error_handler(NULL, NULL, NULL));
+	if (!(check_file_content(fd, &tab)))
+		return (error_handler(NULL, NULL, tab));
+	if (!(check_valid(tab, &tetri_list, &map_list)))
+		return (error_handler(tetri_list, map_list, tab));
+	solve(&tetri_list, &map_list);
+	ft_freeall(&tetri_list, &map_list, &tab);
 	close(fd);
 	return (0);
 }

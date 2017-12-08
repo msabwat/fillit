@@ -6,7 +6,7 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 12:59:22 by schaaban          #+#    #+#             */
-/*   Updated: 2017/11/30 16:08:48 by schaaban         ###   ########.fr       */
+/*   Updated: 2017/12/07 13:33:43 by schaaban         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,36 +15,35 @@
 #include "libft/libft.h"
 #include <stdlib.h>
 
-static char		*rf_read_file(int fd)
+static int		rf_read_file(int fd, char **str)
 {
-	char	*str;
 	char	*line;
 	char	*tmp;
 
-	str = NULL;
+	*str = NULL;
 	while ((get_one_line(fd, &line)) == 1)
 	{
 		if (ft_strlen(line) != 1 && ft_strlen(line) != 5)
 		{
 			free(line);
-			return (NULL);
+			return (0);
 		}
-		tmp = str;
+		tmp = *str;
 		if (ft_strlen(line) == 5)
 		{
 			line[4] = '\0';
-			str = ft_strjoin(str, line);
+			*str = ft_strjoin(*str, line);
 		}
 		else if (ft_strlen(line) == 1)
-			str = ft_strjoin(str, "O");
+			*str = ft_strjoin(*str, "O");
 		if (tmp != NULL)
 			free(tmp);
 		free(line);
 	}
-	return (str);
+	return (1);
 }
 
-static char		*rf_check_tetriminos(char *str)
+static int		rf_check_tetriminos(char *str)
 {
 	int		i;
 	int		count_sha;
@@ -58,7 +57,7 @@ static char		*rf_check_tetriminos(char *str)
 		if (str[i] == 'O')
 		{
 			if (count_sha != 4 || count_dot != 12)
-				return (NULL);
+				return (0);
 			count_dot = 0;
 			count_sha = 0;
 		}
@@ -67,22 +66,29 @@ static char		*rf_check_tetriminos(char *str)
 		else if (str[i] == '#')
 			count_sha++;
 		else
-			return (NULL);
+			return (0);
 	}
-	return ((count_sha != 4 || count_dot != 12) ? NULL : str);
+	return ((count_sha != 4 || count_dot != 12) ? 0 : 1);
 }
 
-char			**check_file_content(int fd)
+int				check_file_content(int fd, char ***tab)
 {
 	char	*str;
-	char	**tab;
 
-	if (!(str = rf_read_file(fd)))
-		return (NULL);
-	str = rf_check_tetriminos(str);
-	if (str == NULL)
-		return (NULL);
-	tab = ft_strsplit(str, 'O');
-	free(str);
-	return (tab);
+	if (!rf_read_file(fd, &str))
+	{
+		if (str != NULL)
+			free(str);
+		return (0);
+	}
+	if (!rf_check_tetriminos(str))
+	{
+		if (str != NULL)
+			free(str);
+		return (0);
+	}
+	*tab = ft_strsplit(str, 'O');
+	if (str != NULL)
+		free(str);
+	return (1);
 }
