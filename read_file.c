@@ -6,7 +6,7 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 12:59:22 by schaaban          #+#    #+#             */
-/*   Updated: 2017/12/07 13:33:43 by schaaban         ###   ########.fr       */
+/*   Updated: 2017/12/18 13:11:36 by msabwat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ int				check_file_content(int fd, char ***tab)
 			free(str);
 		return (0);
 	}
+	if (str == NULL)
+		return (0);
 	if (!rf_check_tetriminos(str))
 	{
 		if (str != NULL)

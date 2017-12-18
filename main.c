@@ -6,7 +6,7 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 12:03:44 by schaaban          #+#    #+#             */
-/*   Updated: 2017/12/08 05:32:32 by schaaban         ###   ########.fr       */
+/*   Updated: 2017/12/18 14:05:09 by msabwat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@ static int		error_handler(t_tetri **tetri_list,
 	return (0);
 }
 
+static int		error_usage(t_tetri **tetri_list,
+	t_map **map_list, char **tab)
+{
+	ft_freeall(&tetri_list, &map_list, &tab);
+	ft_putendl("usage: fillit source_file");
+	return (0);
+}
+
 int				main(int argc, char **argv)
 {
 	int			fd;
@@ -32,7 +40,7 @@ int				main(int argc, char **argv)
 	t_map		**map_list;
 
 	if (argc != 2)
-		return (error_handler(NULL, NULL, NULL));
+		return (error_usage(NULL, NULL, NULL));
 	if ((fd = open(argv[1], 'r')) < 0)
 		return (error_handler(NULL, NULL, NULL));
 	if (!(check_file_content(fd, &tab)))

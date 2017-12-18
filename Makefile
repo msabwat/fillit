@@ -6,7 +6,7 @@
 #    By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/29 12:02:10 by schaaban          #+#    #+#              #
-#    Updated: 2017/12/08 05:37:57 by schaaban         ###   ########.fr        #
+#    Updated: 2017/12/16 17:37:32 by msabwat          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,17 +16,18 @@ LIB_P		=	./libft
 
 FLAGS		=	-Wall -Wextra -Werror
 
-SRCS		=	get_one_line.c		\
-				main.c				\
-				read_file.c			\
-				checker.c			\
-				tetri.c				\
-				tools.c				\
-				solve.c				\
-				ft_atoi_base.c		\
-				map.c				\
-				ft_sqrt.c			\
-				ft_free.c			\
+SRCS		=	get_one_line.c			\
+				main.c								\
+				read_file.c						\
+				checker.c							\
+				tetri.c								\
+				tools1.c							\
+				tools2.c							\
+				solve.c								\
+				ft_atoi_base.c				\
+				map.c									\
+				ft_sqrt.c							\
+				ft_free.c							\
 				ft_itoa_base.c
 
 OBJS		=	$(SRCS:.c=.o)

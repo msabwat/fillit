@@ -6,7 +6,7 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 11:15:47 by schaaban          #+#    #+#             */
-/*   Updated: 2017/12/08 06:04:01 by schaaban         ###   ########.fr       */
+/*   Updated: 2017/12/18 14:00:50 by msabwat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,32 +55,6 @@ static int		solve_map(t_tetri ***tetri_list, t_map ***map_list, int i)
 	return (0);
 }
 
-static char		**print_solution(t_map **map_list, int map_size)
-{
-	int		i;
-	int		j;
-	char	**tab;
-
-	i = 0;
-	map_list = NULL;
-	if ((tab = (char**)malloc(sizeof(char*) * (map_size + 1))) == NULL)
-		return (NULL);
-	while (i < map_size)
-	{
-		j = 0;
-		if ((tab[i] = ft_strnew(map_size)) == NULL)
-			return (NULL);
-		while (j < map_size)
-			tab[i][j++] = '.';
-		i++;
-	}
-	tab[i] = NULL;
-	i = 0;
-	while (tab[i] != NULL)
-		
-	return (tab);
-}
-
 static void		free_tab(char **tab)
 {
 	int		i;
@@ -89,6 +63,28 @@ static void		free_tab(char **tab)
 	while (tab[i] != NULL)
 		free(tab[i++]);
 	free(tab);
+}
+
+static char		**print_solution(t_map **map_list, int map_size)
+{
+	int		i;
+	char	**tab;
+	char	**temp;
+
+	i = 0;
+	if ((tab = (char**)malloc(sizeof(char*) * (map_size + 1))) == NULL)
+		return (NULL);
+	tab[map_size] = NULL;
+	if ((temp = (char**)malloc(sizeof(char*) * (map_size + 1))) == NULL)
+		return (NULL);
+	temp[map_size] = NULL;
+	while (map_list[i])
+	{
+		tab = fillit(i, tab, temp, map_list[i]);
+		i++;
+	}
+	free_tab(temp);
+	return (tab);
 }
 
 void			solve(t_tetri ***tetri_list, t_map ***map_list)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.c                                            :+:      :+:    :+:   */
+/*   tools1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 09:28:18 by schaaban          #+#    #+#             */
-/*   Updated: 2017/12/08 05:28:21 by schaaban         ###   ########.fr       */
+/*   Updated: 2017/12/16 18:42:13 by msabwat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "libft/libft.h"
 #include <stdlib.h>
 
-int			**ft_strtobin(char *str)
+int				**ft_strtobin(char *str)
 {
 	int		i;
 	int		j;
@@ -40,29 +40,7 @@ int			**ft_strtobin(char *str)
 	return (tab);
 }
 
-void		ft_putbintab(t_map *map)
-{
-	int		i;
-	int		t;
-	char	*str;
-
-	i = 0;
-	t = 0;
-	if (map->tab == NULL)
-		return ;
-	while (i < map->map_size)
-	{
-		str = ft_itoa_base(map->tab[i], 2);
-		while ((ft_strlen(str) + t++) < (size_t)map->map_size)
-			ft_putchar('0');
-		ft_putendl(str);
-		free(str);
-		i++;
-		t = 0;
-	}
-}
-
-int			tetri_count(t_tetri **tab)
+int				tetri_count(t_tetri **tab)
 {
 	int		i;
 
@@ -74,13 +52,13 @@ int			tetri_count(t_tetri **tab)
 	return (i);
 }
 
-static void	ft_settetri(t_tetri *self, int width, int height)
+static void		ft_settetri(t_tetri *self, int width, int height)
 {
 	self->width = width;
 	self->height = height;
 }
 
-void		tetri_id(t_tetri *self)
+void			tetri_id(t_tetri *self)
 {
 	uint16_t	i;
 
