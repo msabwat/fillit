@@ -6,12 +6,12 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/05 13:30:58 by schaaban          #+#    #+#             */
-/*   Updated: 2017/12/08 05:33:02 by schaaban         ###   ########.fr       */
+/*   Updated: 2018/04/26 14:32:17 by msabwat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "libft/libft.h"
+#include "../libft/libft.h"
 #include <stdlib.h>
 
 t_map		**map_creator(int count)

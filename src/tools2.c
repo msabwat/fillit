@@ -6,12 +6,12 @@
 /*   By: msabwat <msabwat@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/16 17:36:46 by msabwat           #+#    #+#             */
-/*   Updated: 2017/12/18 14:05:38 by msabwat          ###   ########.fr       */
+/*   Updated: 2018/04/26 14:33:01 by msabwat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "libft/libft.h"
+#include "../libft/libft.h"
 #include <stdlib.h>
 
 static char			*fill_line(char *str, int map_size, char l)

@@ -6,12 +6,12 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 18:19:58 by schaaban          #+#    #+#             */
-/*   Updated: 2017/12/08 04:10:01 by schaaban         ###   ########.fr       */
+/*   Updated: 2018/04/26 14:32:41 by msabwat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "libft/libft.h"
+#include "../libft/libft.h"
 #include <stdlib.h>
 
 t_tetri		**tetri_creator(int count)

@@ -6,11 +6,11 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/23 19:09:00 by schaaban          #+#    #+#             */
-/*   Updated: 2017/11/30 16:04:44 by schaaban         ###   ########.fr       */
+/*   Updated: 2018/04/26 14:32:00 by msabwat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "../libft/libft.h"
 #include "get_one_line.h"
 #include <stdlib.h>
 #include <unistd.h>

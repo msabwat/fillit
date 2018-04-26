@@ -6,12 +6,12 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/07 15:54:47 by schaaban          #+#    #+#             */
-/*   Updated: 2017/12/08 05:33:12 by schaaban         ###   ########.fr       */
+/*   Updated: 2018/04/26 14:31:36 by msabwat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "libft/libft.h"
+#include "../libft/libft.h"
 #include <stdlib.h>
 
 static void	ft_freemap(t_map ***list)

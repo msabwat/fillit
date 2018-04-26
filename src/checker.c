@@ -6,12 +6,12 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/30 15:42:21 by schaaban          #+#    #+#             */
-/*   Updated: 2017/12/18 13:10:43 by msabwat          ###   ########.fr       */
+/*   Updated: 2018/04/26 14:31:11 by msabwat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include "libft/libft.h"
+#include "../libft/libft.h"
 #include <stdlib.h>
 
 static int	ck_check_value(int **tab, int i, int j)

@@ -6,13 +6,13 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/29 12:59:22 by schaaban          #+#    #+#             */
-/*   Updated: 2017/12/18 13:11:36 by msabwat          ###   ########.fr       */
+/*   Updated: 2018/04/26 14:32:24 by msabwat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "get_one_line.h"
-#include "libft/libft.h"
+#include "../libft/libft.h"
 #include <stdlib.h>
 
 static int		rf_read_file(int fd, char **str)

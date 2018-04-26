@@ -6,13 +6,13 @@
 /*   By: schaaban <schaaban@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/04 11:15:47 by schaaban          #+#    #+#             */
-/*   Updated: 2017/12/18 14:00:50 by msabwat          ###   ########.fr       */
+/*   Updated: 2018/04/26 14:32:31 by msabwat          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 #include "solve_def.h"
-#include "libft/libft.h"
+#include "../libft/libft.h"
 #include <stdlib.h>
 
 static void		concat_maps(t_map *m1, t_map **m2)
