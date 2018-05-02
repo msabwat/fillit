@@ -5,11 +5,11 @@ If you are running linux, you can replace clang by gcc in the Makefile CC variab
 
 ### Run:
 ```console
-$make
+make
 ```
 
 ```console
-$./fillit testfile
+./fillit testfile
 ```
 You can replace testfile with any file you like.
 
