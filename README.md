@@ -1,3 +1,6 @@
+#  FILLIT
+[![Build Status](https://travis-ci.org/msabwat/fillit.svg?branch=master)](https://travis-ci.org/msabwat/fillit)
+
 Group project with Sami Chaaban. Combine 26 tetriminos in the smallest square possible.
 
 ### Note:
